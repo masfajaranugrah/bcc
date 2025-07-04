@@ -8,8 +8,10 @@ import userRoutes from './routes/userRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import protectedRoutes from './routes/protectedRoutes.js';
 
-const envFile = process.env.NODE_ENV === 'development' ? '.env.dev' : '.env.prod';
+const NODE_ENV = process.env.NODE_ENV || 'production';
+const envFile = NODE_ENV === 'development' ? '.env.dev' : '.env.prod';
 dotenv.config({ path: envFile });
+
 
 const app = express();
 app.use(cookieParser());
